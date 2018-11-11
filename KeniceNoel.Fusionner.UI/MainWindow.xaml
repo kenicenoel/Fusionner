@@ -1,0 +1,80 @@
+﻿<syncfusion:RibbonWindow x:Class="KeniceNoel.Fusionner.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:sfSkinManager="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        mc:Ignorable="d"
+        sfSkinManager:SfSkinManager.VisualStyle="Office2016Colorful"
+                         Office2010Icon="Assets/Images/json.png"
+                         Icon="Assets/Images/json.png"
+                         DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Fusionner Json Merger">
+
+    <Window.Resources>
+        <Style x:Key="StatusTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Margin" Value="5, 0, 0 ,0"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="RibbonButtonStyle">
+            <Setter Property="syncfusion:RibbonButton.Margin" Value="5"></Setter>
+        </Style>
+
+        <Style x:Key="DirectoryItemsListStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="FontFamily" Value="Inter UI Regular"></Setter>
+        </Style>
+
+        <DataTemplate x:Key="DirectoryItemTemplate">
+            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 5">
+                <Image Source="{Binding FileImageUrl }" Width="18"></Image>
+                <TextBlock Margin="5, 0, 0, 0" Text="{Binding Label}" Style="{StaticResource DirectoryItemsListStyle}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height ="20"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <syncfusion:Ribbon Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <syncfusion:RibbonTab Caption="Home">
+                <syncfusion:RibbonButton x:Name="ChooseDirectoryButton" SizeForm="Large" 
+                                        LargeIcon="Assets/Images/folder-17.png"
+                                        Style="{StaticResource RibbonButtonStyle}"
+                                        Label="Choose Directory" Click="ChooseDirectoryButton_OnClick">
+
+                </syncfusion:RibbonButton>
+            </syncfusion:RibbonTab>
+        </syncfusion:Ribbon>
+        <Grid x:Name="PreviewItemsGrid" Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="DirectoryItemsList" ItemsSource="{Binding DirectoryItems}" 
+                     ItemTemplate="{DynamicResource DirectoryItemTemplate}" Grid.Column="0"
+                     Margin="0, 2, 0, 5" SelectionChanged="DirectoryItemsList_OnSelectionChanged"
+                     />
+            <syncfusion:EditControl x:Name="ItemPreview" Grid.Column="1"  BorderBrush="WhiteSmoke" BorderThickness="1" Background="White" 
+                                    Foreground="Black" HorizontalAlignment="Left"  Visibility="Visible"
+                                    Margin="10, 2, 0, 5" DocumentLanguage="Custom" Padding="5"  IsReadOnly="True" />
+        </Grid>
+        <TextBlock x:Name="StatusTextBlock" Text="Ready" Grid.Row="2" Grid.Column="1" Style="{StaticResource StatusTextBlockStyle}"></TextBlock>
+
+    </Grid>
+
+
+
+
+</syncfusion:RibbonWindow>
