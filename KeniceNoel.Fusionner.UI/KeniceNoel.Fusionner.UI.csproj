@@ -97,7 +97,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Merges\Json.cs" />
+    <Compile Include="Mergers\JsonMerger.cs" />
     <Compile Include="Models\DirectoryItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -148,6 +148,9 @@
     <Resource Include="Assets\Images\Feather\file-text.png" />
     <Resource Include="Assets\Images\Feather\file.png" />
     <Resource Include="Assets\Images\Feather\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\single-copy-04.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

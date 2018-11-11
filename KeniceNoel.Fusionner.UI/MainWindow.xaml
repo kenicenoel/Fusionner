@@ -10,7 +10,7 @@
                          Office2010Icon="Assets/Images/json.png"
                          Icon="Assets/Images/json.png"
                          DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Fusionner Json Merger">
+        Title="Fusionner JsonBuildAndExportr BuildAndExportr">
 
     <Window.Resources>
         <Style x:Key="StatusTextBlockStyle" TargetType="TextBlock">
@@ -53,22 +53,29 @@
                                         LargeIcon="Assets/Images/folder-17.png"
                                         Style="{StaticResource RibbonButtonStyle}"
                                         Label="Choose Directory" Click="ChooseDirectoryButton_OnClick">
-
+                </syncfusion:RibbonButton>
+                <syncfusion:RibbonButton x:Name="MergeFilesButton" SizeForm="Large" 
+                                         LargeIcon="Assets/Images/single-copy-04.png"
+                                         Style="{StaticResource RibbonButtonStyle}"
+                                         IsEnabled="False"
+                                         Label="Merge Files" Click="MergeFilesButton_OnClick">
                 </syncfusion:RibbonButton>
             </syncfusion:RibbonTab>
         </syncfusion:Ribbon>
         <Grid x:Name="PreviewItemsGrid" Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <ListBox x:Name="DirectoryItemsList" ItemsSource="{Binding DirectoryItems}" 
                      ItemTemplate="{DynamicResource DirectoryItemTemplate}" Grid.Column="0"
                      Margin="0, 2, 0, 5" SelectionChanged="DirectoryItemsList_OnSelectionChanged"
                      />
+            
             <syncfusion:EditControl x:Name="ItemPreview" Grid.Column="1"  BorderBrush="WhiteSmoke" BorderThickness="1" Background="White" 
-                                    Foreground="Black" HorizontalAlignment="Left"  Visibility="Visible"
-                                    Margin="10, 2, 0, 5" DocumentLanguage="Custom" Padding="5"  IsReadOnly="True" />
+                                    Foreground="Black" HorizontalAlignment="Left"  Visibility="Hidden"
+                                    Margin="10, 2, 0, 5" DocumentLanguage="Custom" Padding="5"
+                                    IsReadOnly="True" />
         </Grid>
         <TextBlock x:Name="StatusTextBlock" Text="Ready" Grid.Row="2" Grid.Column="1" Style="{StaticResource StatusTextBlockStyle}"></TextBlock>
 
